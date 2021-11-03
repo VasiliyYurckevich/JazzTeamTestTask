@@ -10,7 +10,7 @@ import java.util.*;
 public class NumberToTitle  {
     private final static char ONEENDING= '1',TWOENDING='2',THREEENDINGS='3',FOURENDINGS ='4';
     private final static String ZERO = "0";
-
+    private final static String[] ENDINGS = new String[]{"а","ов","и"};
 
     //private final static String minus = "-";
     private StringBuffer composition = new StringBuffer();
@@ -80,14 +80,14 @@ public class NumberToTitle  {
                     convertor.unitThousandConvertor(dataStorage.get(i));
                     if (dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == ONEENDING &&
                         dataStorage.get(i).charAt(dataStorage.get(i).length() - 2) != ONEENDING) {
-                        composition.append(convertor.getName() + " " + degree.get(dataStorage.size() - i - 1) + "а ");
+                        composition.append(convertor.getName() + " " + degree.get(dataStorage.size() - i - 1) + ENDINGS[0] + " ");
                     } else if ((dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == TWOENDING ||
                             dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == THREEENDINGS ||
                             dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == FOURENDINGS) &&
                             dataStorage.get(i).charAt(dataStorage.get(i).length() - 2) != ONEENDING
 
                     ) {
-                        composition.append(convertor.getName() + " " + degree.get(dataStorage.size() - i - 1) + "и ");
+                        composition.append(convertor.getName() + " " + degree.get(dataStorage.size() - i - 1) +  ENDINGS[2] + " ");
                     } else {
                         composition.append(convertor.getName() + " " + degree.get(dataStorage.size() - i - 1) + " ");
                     }
@@ -102,9 +102,9 @@ public class NumberToTitle  {
                             dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == FOURENDINGS ) &&
                             dataStorage.get(i).charAt(dataStorage.get(i).length() - 2) != ONEENDING
                     ) {
-                        composition.append(convertor.getName()+ " " + degree.get(dataStorage.size() - i - 1) + "а ");
+                        composition.append(convertor.getName()+ " " + degree.get(dataStorage.size() - i - 1) + ENDINGS[0] + " ");
                     } else {
-                        composition.append(convertor.getName() + " " + degree.get(dataStorage.size() - i - 1) + "ов ");
+                        composition.append(convertor.getName() + " " + degree.get(dataStorage.size() - i - 1) +  ENDINGS[1] +" ");
                     }
 
                 }
