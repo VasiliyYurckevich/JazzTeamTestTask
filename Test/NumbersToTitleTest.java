@@ -2,6 +2,8 @@ import com.company.NameConstructor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.math.BigInteger;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class NumbersToTitleTest {
 
@@ -10,7 +12,8 @@ public class NumbersToTitleTest {
 
         BigInteger zero = BigInteger.valueOf(0);
         String ZERO = "ноль";
-        NameConstructor testing = new NameConstructor(zero);
+        NameConstructor testing = new NameConstructor();
+        testing.compsiteAnswer(zero);
         System.out.println("test 1 : zero");
         System.out.println(zero + " = " + testing.getName());
         Assertions.assertEquals(ZERO, testing.getName(),"Ошибка 1");
@@ -20,7 +23,8 @@ public class NumbersToTitleTest {
 
         BigInteger testInt = BigInteger.valueOf(333222111);
         String testResult = "триста тридцать три миллиона двести двадцать две тысячи сто одиннадцать ";
-        NameConstructor testing = new NameConstructor(testInt);
+        NameConstructor testing = new NameConstructor();
+        testing.compsiteAnswer(testInt);
         System.out.println("Ttest 2 : random number");
         System.out.println(testInt + " = " + testing.getName());
         Assertions.assertEquals( testResult, testing.getName(),"Ошибка 2");
@@ -35,7 +39,8 @@ public class NumbersToTitleTest {
 
         System.out.println("test 3: Numbers 1-19");
         for (int i = 1; i < 20; i++) {
-            NameConstructor testing = new NameConstructor(BigInteger.valueOf(i));
+            NameConstructor testing = new NameConstructor();
+            testing.compsiteAnswer(BigInteger.valueOf(i));
             System.out.println(i + " = " + testing.getName());
             Assertions.assertEquals(TOKENS[i-1], testing.getName(),"Ошибка в промежутке от 1 до 19");
         }
@@ -48,13 +53,27 @@ public class NumbersToTitleTest {
         BigInteger tokens[] = new BigInteger[]{BigInteger.valueOf(29), BigInteger.valueOf(83),BigInteger.valueOf(47),BigInteger.valueOf(65)};
         System.out.println(" test 4 : double-digit numbers");
         for (int i = 0; i < 4; i++) {
-            NameConstructor testing = new NameConstructor(tokens[i]);
+            NameConstructor testing = new NameConstructor();
+            testing.compsiteAnswer(tokens[i]);
             System.out.println(tokens[i] + " = " + testing.getName());
-            Assertions.assertEquals(TOKENS[i], testing.getName(),"Ошибка для двухзгначных чисел" );
+            Assertions.assertEquals(TOKENS[i], testing.getName(),"Ошибка для двухзначных чисел" );
         }
     }
 
+    @Test
+    public void testInputMismatchExceptionWhenInnerNotInt() throws InputMismatchException {
+        Exception exception = Assertions.assertThrows(InputMismatchException.class, () -> {
+             Scanner sc = new Scanner("1f11");
+             BigInteger numIn = sc.nextBigInteger();
+        });
+    }
 
-
+    @Test
+    public void testExceptionWhenMinusString() throws NumberFormatException {
+        Exception exception = Assertions.assertThrows(NumberFormatException.class, () -> {
+            String s = new String("-");
+            Integer.parseInt(s);
+        });
+    }
 
 }

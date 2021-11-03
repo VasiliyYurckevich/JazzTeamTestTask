@@ -45,13 +45,10 @@ public class NameConstructor  {
     }
 
     public String getName(){
-        compsiteAnswer(numIn);
+
         return composition.toString();
     }
 
-    public  NameConstructor(BigInteger num){
-        this.numIn = num;
-    }
 
     private void checkingForNegativity(String s){
         try {
@@ -112,7 +109,7 @@ public class NameConstructor  {
         dataStorage.set(0,subs.toString());
     }
 
-    private void compsiteAnswer(BigInteger numIn){
+    public void compsiteAnswer(BigInteger numIn){
         getDataStorage(numIn);
         checkingForNegativity(dataStorage.get(0));
         for (int i=0;i<dataStorage.size();i++){

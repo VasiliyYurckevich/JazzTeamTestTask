@@ -12,7 +12,8 @@ public class Main {
                 System.out.print("Введите целое число:");
                 BigInteger numbIn = sc.nextBigInteger();
                 if (numbIn.toString().length()<65){
-                    NameConstructor title = new NameConstructor(numbIn);
+                    NameConstructor title = new NameConstructor();
+                    title.compsiteAnswer(numbIn);
                     System.out.println(title.getName());
                 }else {
                     System.out.println("Слишком большое число");
