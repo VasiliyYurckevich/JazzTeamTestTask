@@ -15,7 +15,7 @@ public class NumberToTitle  {
 
 
 
-    private static Map<Integer, String> degree = new HashMap<>();
+    private final static Map<Integer, String> degree = new HashMap<>();
     static {
         degree.put(21, "вигинтиллион");
         degree.put(20, "новемдециллион");
@@ -44,7 +44,7 @@ public class NumberToTitle  {
     protected void getDataStorage(BigInteger numIn){
         String s = numIn.toString();
         String subString;
-        for (int i = 0;s.length()>3; i++) {
+        for (int i = s.length(); s.length()>3; i = i - 3) {
             subString = s.substring(s.length()-3);
             s = s.substring(0,s.length()-3);
             dataStorage.add(subString);
