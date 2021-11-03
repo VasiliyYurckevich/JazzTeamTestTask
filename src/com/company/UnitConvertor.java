@@ -1,7 +1,7 @@
 package com.company;
 
 public class UnitConvertor {
-    private StringBuffer nameBuffer = new StringBuffer();
+    private final StringBuffer nameBuffer = new StringBuffer();
     private static final String[] TOKENS = new String[]{"", "один", "два", "три", "четыре",
             "пять", "шесть", "семь", "восемь", "девять"};
     private static final String[] TensTOKENSALT = new String[]{"десять", "одиннадцать", "двенадцать", "тринадцать", "четырнадцать",

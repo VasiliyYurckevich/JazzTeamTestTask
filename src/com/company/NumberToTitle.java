@@ -9,11 +9,9 @@ import java.util.*;
 
 public class NumberToTitle  {
     private final static char ONEENDING= '1',TWOENDING='2',THREEENDINGS='3',FOURENDINGS ='4';
-    private final static String ZERO = "0";
+    private final static String ZERO = "000",MINUS = "минус",ZEROTITLE = "ноль";
     private final static String[] ENDINGS = new String[]{"а","ов","и"};
-
-    //private final static String minus = "-";
-    private StringBuffer composition = new StringBuffer();
+    private final StringBuffer composition = new StringBuffer();
 
 
 
@@ -62,9 +60,6 @@ public class NumberToTitle  {
     public  NumberToTitle(BigInteger numIn){
         getDataStorage(numIn);
         checkingForNegativity(dataStorage.get(0));
-        if(dataStorage.size() == 1 && dataStorage.get(0).equals(ZERO)){
-            composition.append("ноль");
-        }
         for (int i=0;i<dataStorage.size();i++){
             UnitConvertor convertor = new UnitConvertor();
             StringBuffer subs = new StringBuffer(dataStorage.get(i));
@@ -108,6 +103,9 @@ public class NumberToTitle  {
                     }
 
                 }
+            }else {
+                composition.append(ZEROTITLE);
+
             }
 
         }
@@ -116,12 +114,12 @@ public class NumberToTitle  {
     private void checkingForNegativity(String s){
         try {
             if(Integer.parseInt(dataStorage.get(0)) < 0 ){
-                composition.append("минус ");
+                composition.append(MINUS + " ");
                 String value = dataStorage.get(0).substring(1);
                 dataStorage.set(0,value);
             }
         }catch (NumberFormatException e){
-            composition.append("минус ");
+            composition.append(MINUS + " ");
             dataStorage.set(0,"000");
         }
     }
