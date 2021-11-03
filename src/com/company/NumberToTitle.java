@@ -8,7 +8,7 @@ import java.util.*;
 
 
 public class NumberToTitle  {
-    private final static char ONEENDING= '1',TWOENDING='2',threeEnding='3',fourEnding ='4';
+    private final static char ONEENDING= '1',TWOENDING='2',THREEENDINGS='3',FOURENDINGS ='4';
     private final static String ZERO = "0";
 
 
@@ -82,8 +82,8 @@ public class NumberToTitle  {
                         dataStorage.get(i).charAt(dataStorage.get(i).length() - 2) != ONEENDING) {
                         composition.append(convertor.getName() + " " + degree.get(dataStorage.size() - i - 1) + "а ");
                     } else if ((dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == TWOENDING ||
-                            dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == threeEnding ||
-                            dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == fourEnding) &&
+                            dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == THREEENDINGS ||
+                            dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == FOURENDINGS) &&
                             dataStorage.get(i).charAt(dataStorage.get(i).length() - 2) != ONEENDING
 
                     ) {
@@ -98,8 +98,8 @@ public class NumberToTitle  {
                         dataStorage.get(i).charAt(dataStorage.get(i).length() - 2) != ONEENDING) {
                         composition.append(convertor.getName() + " " + degree.get(dataStorage.size() - i - 1) + " ");
                     } else if ((dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == TWOENDING ||
-                            dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == threeEnding ||
-                            dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == fourEnding ) &&
+                            dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == THREEENDINGS ||
+                            dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == FOURENDINGS ) &&
                             dataStorage.get(i).charAt(dataStorage.get(i).length() - 2) != ONEENDING
                     ) {
                         composition.append(convertor.getName()+ " " + degree.get(dataStorage.size() - i - 1) + "а ");
