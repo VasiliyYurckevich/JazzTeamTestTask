@@ -19,7 +19,7 @@ public class UnitConvertor {
 
 
 
-    public void unitConvertor(String s) {
+    public void convertorUnit(String s) {
 
         char[] charArr = s.toCharArray();
         nameBuffer.append(HundgredTOKENS[Character.getNumericValue(charArr[0])]);

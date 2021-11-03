@@ -17,7 +17,6 @@ public class Main {
                 }else {
                     System.out.println("Слишком большое число");
                 }
-
             }catch (InputMismatchException e) {
                 System.out.println("Вы ввели не число. Попробуйте еще раз.");
             }

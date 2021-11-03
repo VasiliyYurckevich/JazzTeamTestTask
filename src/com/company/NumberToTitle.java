@@ -8,9 +8,9 @@ import java.util.*;
 
 
 public class NumberToTitle  {
-    private static char oneEnding= '1',twoEnding='2',threeEnding='3',fourEnding ='4';
-    private static String fullZero = "000";
-    private static String minus = "-";
+    private final static char ONEENDING= '1',twoEnding='2',threeEnding='3',fourEnding ='4';
+    private final static String FULLZERO = "000";
+    private final static String minus = "-";
     private StringBuffer composition = new StringBuffer();
 
 
@@ -59,17 +59,8 @@ public class NumberToTitle  {
 
     public  NumberToTitle(BigInteger numIn){
         getDataStorage(numIn);
-        try {
-            if(Integer.parseInt(dataStorage.get(0)) < 0 ){
-                composition.append("минус ");
-                String value = dataStorage.get(0).substring(1);
-                dataStorage.set(0,value);
-            }
-        }catch (NumberFormatException e){
-            composition.append("минус ");
-            dataStorage.set(0,"000");
-        }
-        if(dataStorage.size() == 1 && dataStorage.get(0) =="0"){
+        checkingForNegativity(dataStorage.get(0));
+        if(dataStorage.size() == 1 && dataStorage.get(0).equals("0")){
             composition.append("ноль");
         }
         for (int i=0;i<dataStorage.size();i++){
@@ -79,19 +70,19 @@ public class NumberToTitle  {
                 subs.insert(0, '0');
             }
             dataStorage.set(i,subs.toString());
-            if(dataStorage.get(i).equals(fullZero) == false) {
+            if(dataStorage.get(i).equals(FULLZERO) == false) {
                 if (dataStorage.size() == i + 1) {
-                    convertor.unitConvertor(dataStorage.get(i));
+                    convertor.convertorUnit(dataStorage.get(i));
                     composition.append(convertor.getName() + " ");
                 } else if (dataStorage.size() == i + 2) {
                     convertor.unitThousandConvertor(dataStorage.get(i));
-                    if (dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == oneEnding &&
-                        dataStorage.get(i).charAt(dataStorage.get(i).length() - 2) != oneEnding) {
+                    if (dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == ONEENDING &&
+                        dataStorage.get(i).charAt(dataStorage.get(i).length() - 2) != ONEENDING) {
                         composition.append(convertor.getName() + " " + degree.get(dataStorage.size() - i - 1) + "а ");
                     } else if ((dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == twoEnding ||
                             dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == threeEnding ||
                             dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == fourEnding) &&
-                            dataStorage.get(i).charAt(dataStorage.get(i).length() - 2) != oneEnding
+                            dataStorage.get(i).charAt(dataStorage.get(i).length() - 2) != ONEENDING
 
                     ) {
                         composition.append(convertor.getName() + " " + degree.get(dataStorage.size() - i - 1) + "и ");
@@ -100,14 +91,14 @@ public class NumberToTitle  {
                     }
 
                 } else {
-                    convertor.unitConvertor(dataStorage.get(i));
-                    if (dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == oneEnding&&
-                        dataStorage.get(i).charAt(dataStorage.get(i).length() - 2) != oneEnding) {
+                    convertor.convertorUnit(dataStorage.get(i));
+                    if (dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == ONEENDING &&
+                        dataStorage.get(i).charAt(dataStorage.get(i).length() - 2) != ONEENDING) {
                         composition.append(convertor.getName() + " " + degree.get(dataStorage.size() - i - 1) + " ");
                     } else if ((dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == twoEnding ||
                             dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == threeEnding ||
                             dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == fourEnding ) &&
-                            dataStorage.get(i).charAt(dataStorage.get(i).length() - 2) != oneEnding
+                            dataStorage.get(i).charAt(dataStorage.get(i).length() - 2) != ONEENDING
                     ) {
                         composition.append(convertor.getName()+ " " + degree.get(dataStorage.size() - i - 1) + "а ");
                     } else {
@@ -119,6 +110,20 @@ public class NumberToTitle  {
 
         }
     }
+
+    private void checkingForNegativity(String s){
+        try {
+            if(Integer.parseInt(dataStorage.get(0)) < 0 ){
+                composition.append("минус ");
+                String value = dataStorage.get(0).substring(1);
+                dataStorage.set(0,value);
+            }
+        }catch (NumberFormatException e){
+            composition.append("минус ");
+            dataStorage.set(0,"000");
+        }
+    }
+
 
 
 }
