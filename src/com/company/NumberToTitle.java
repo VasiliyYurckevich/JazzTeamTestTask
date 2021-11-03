@@ -72,7 +72,7 @@ public class NumberToTitle  {
                     convertor.convertorUnit(dataStorage.get(i));
                     composition.append(convertor.getName() + " ");
                 } else if (dataStorage.size() == i + 2) {
-                    convertor.unitThousandConvertor(dataStorage.get(i));
+                    convertor.convertorThouthandsUnit(dataStorage.get(i));
                     if (dataStorage.get(i).charAt(dataStorage.get(i).length() - 1) == ONEENDING &&
                         dataStorage.get(i).charAt(dataStorage.get(i).length() - 2) != ONEENDING) {
                         composition.append(convertor.getName() + " " + degree.get(dataStorage.size() - i - 1) + ENDINGS[0] + " ");

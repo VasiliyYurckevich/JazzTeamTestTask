@@ -42,7 +42,7 @@ public class UnitConvertor {
 
     }
 
-    public void unitThousandConvertor(String s) {
+    public void convertorThouthandsUnit(String s) {
         StringBuffer subs = new StringBuffer(s);
         while (subs.length() < 3) {
             subs.insert(0, '0');
