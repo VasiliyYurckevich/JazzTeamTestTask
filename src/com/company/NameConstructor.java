@@ -14,20 +14,19 @@ public class NameConstructor  {
     private final static String ZERO = "000",MINUS = "минус",ZEROTITLE = "ноль";
     private final static String[] ENDINGS = new String[]{"а","ов","и"};
     private final StringBuffer composition = new StringBuffer();
-    BigInteger numIn;
 
 
     private final static Map<Integer, String> degree = new HashMap<>();
     static {
-        try {
-            Scanner scanner = new Scanner(new FileReader("src/com/company/resources/degrees"));
-            while (scanner.hasNextLine()) {
-                String[] columns = scanner.nextLine().split(",");
-                degree.put(Integer.parseInt(columns[0]),columns[1]);
+            try {
+                Scanner scanner = new Scanner(new FileReader("src/com/company/resources/degrees.txt"));
+                while (scanner.hasNextLine()) {
+                    String[] columns = scanner.nextLine().split(",");
+                    degree.put(Integer.parseInt(columns[0]),columns[1]);
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
 
     }
     ArrayList<String> dataStorage = new ArrayList<>();

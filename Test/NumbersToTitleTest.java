@@ -1,9 +1,13 @@
 import com.company.NameConstructor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.math.BigInteger;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 public class NumbersToTitleTest {
 
@@ -75,5 +79,29 @@ public class NumbersToTitleTest {
             Integer.parseInt(s);
         });
     }
+
+
+    @Test
+    public void testGetNameAllTable() throws Exception {
+        ArrayList<BigInteger> testdata = new ArrayList<>();
+        ArrayList<String> exeptedata = new ArrayList<>();
+        try {
+            Scanner scanner = new Scanner(new FileReader("Test/TestResources/TestData.txt"));
+            int i=0;
+            while (scanner.hasNextLine()) {
+                String[] columns = scanner.nextLine().split(";");
+                testdata.add(i,BigInteger.valueOf(Long.parseLong(columns[0])));
+                exeptedata.add(i,columns[1]);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        for(int i = 0;testdata.size()> i;i++){
+            NameConstructor testing = new NameConstructor();
+            testing.compsiteAnswer(testdata.get(i));
+            Assertions.assertEquals( testing.getName(),exeptedata.get(i),"Ошибка в числе: "+ testdata.get(i));
+        }
+    }
+
 
 }

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/Test/NumbersToTitleTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Test/TestResources/TestData" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/com/company/Main.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/company/NameConstructor.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/company/UnitConvertor.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/company/resources/degrees" charset="windows-1251" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
