@@ -3,9 +3,6 @@ package Test;
 import com.company.NameConstructor;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.math.BigInteger;
