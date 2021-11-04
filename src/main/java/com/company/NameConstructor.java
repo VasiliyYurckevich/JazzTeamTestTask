@@ -19,7 +19,7 @@ public class NameConstructor  {
     private final static Map<Integer, String> degree = new HashMap<>();
     static {
             try {
-                Scanner scanner = new Scanner(new FileReader("src/com/company/resources/degrees.txt"));
+                Scanner scanner = new Scanner(new FileReader("src/main/java/com/company/resources/degrees.txt"));
                 while (scanner.hasNextLine()) {
                     String[] columns = scanner.nextLine().split(",");
                     degree.put(Integer.parseInt(columns[0]),columns[1]);

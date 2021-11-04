@@ -4,6 +4,7 @@
     <root id="archive" name="JazzTeamTestTask.jar">
       <element id="module-output" name="JazzTeamTestTask" />
       <element id="extracted-dir" path="$PROJECT_DIR$/../../../../../../java_libs/poi-5.0.0/poi-5.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../../../java_libs/CSV Plugin/lib/intellij-csv-validator-2.18.0.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
